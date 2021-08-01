@@ -34,6 +34,13 @@ export default {
     color: $color5;
   }
 
+  &_you {
+    margin-left: 0;
+    margin-right: 1em;
+
+    align-self: flex-end;
+  }
+
   span {
     display: inline-block;
 
