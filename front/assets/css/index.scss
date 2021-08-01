@@ -17,6 +17,7 @@ body {
 
   font-size: 14px;
   font-family: "Roboto", sans-serif;
+  text-shadow: 2px 2px 4px $black1;
 
   ul {
     list-style: none;
@@ -37,7 +38,7 @@ body {
   outline: none;
 
   color: $color3;
-  background-color: $color2;
+  background-color: $color1;
 
   cursor: pointer;
 }
@@ -51,9 +52,23 @@ body {
   outline: none;
 
   color: $color3;
-  background-color: $color2;
+  background-color: $color1;
 
   &::placeholder {
     color: $color3;
+  }
+}
+
+.messages {
+  width: 70%;
+
+  background-color: $color2;
+
+  padding: 1em;
+
+  border-radius: 4px;
+
+  &__name {
+    color: $color5;
   }
 }

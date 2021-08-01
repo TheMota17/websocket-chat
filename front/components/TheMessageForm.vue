@@ -19,12 +19,3 @@ export default {
   }),
 };
 </script>
-
-<style lang="scss" scoped>
-.input {
-  background-color: $color1;
-}
-.button {
-  background-color: $color1;
-}
-</style>

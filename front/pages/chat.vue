@@ -6,20 +6,15 @@
           <h1 class="messages__title">
             Messages
           </h1>
-          <div class="messages__list">
-            <div class="messages__message"></div>
-            <div class="messages__message"></div>
-            <div class="messages__message"></div>
-            <div class="messages__message"></div>
-          </div>
+          <TheMessagesList :messages="messages" />
           <TheMessageForm />
         </section>
         <aside class="users">
           <h1 class="users__title">Room: Hello World!</h1>
           <ul class="users__list">
-            <li class="users__item">1. Jack</li>
-            <li class="users__item">2. Lena</li>
-            <li class="users__item">3. Alex</li>
+            <li v-for="user of usersNum" :key="user.num" class="users__item">
+              {{ user.num }}. {{ user.name }}
+            </li>
           </ul>
         </aside>
       </article>
@@ -30,6 +25,21 @@
 <script>
 export default {
   middleware: ["auth"],
+  computed: {
+    messages() {
+      return this.$store.getters.messages;
+    },
+    users() {
+      return this.$store.getters.users;
+    },
+    usersNum() {
+      const users = this.users;
+
+      return users.map((user) => {
+        return { name: user, num: users.indexOf(user) + 1 };
+      });
+    },
+  },
 };
 </script>
 
@@ -42,41 +52,6 @@ main {
   width: 100%;
 
   display: flex;
-}
-
-.messages {
-  width: 70%;
-
-  background-color: $color2;
-
-  padding: 1em;
-
-  border-radius: 4px;
-
-  &__list {
-    min-height: 400px;
-
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    background-color: $color1;
-
-    margin-top: 1em;
-
-    border-radius: 4px;
-  }
-
-  &__message {
-    width: 90%;
-    min-height: 50px;
-
-    margin-top: 1em;
-
-    border-radius: 4px;
-
-    background-color: $color2;
-  }
 }
 
 .users {
@@ -92,8 +67,13 @@ main {
 
   &__list {
     margin-top: 1em;
+    padding: 0.4em;
 
     font-size: 15px;
+
+    border-radius: 4px;
+
+    background-color: $color1;
   }
 
   &__item {
@@ -102,6 +82,10 @@ main {
     font-weight: bold;
 
     margin-top: 0.5em;
+
+    &:nth-child(1) {
+      margin-top: 0;
+    }
   }
 }
 </style>

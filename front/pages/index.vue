@@ -10,7 +10,6 @@
 <script>
 export default {
   layout: "login",
-  mounted() {},
 };
 </script>
 
@@ -26,5 +25,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.login {
+  padding: 1em 2em;
+
+  border-radius: 4px;
+
+  background-color: $color2;
 }
 </style>

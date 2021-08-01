@@ -1,9 +1,6 @@
-const io = require("socket.io")();
+const io = require("./app.js");
+const server = require("./server.js");
 
 const PORT = 443;
-
-io.on("connection", (socket) => {
-  console.log("Conn!");
-});
 
 io.listen(PORT);
