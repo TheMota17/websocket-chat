@@ -10,6 +10,7 @@
 <script>
 export default {
   layout: "login",
+  mounted() {},
 };
 </script>
 

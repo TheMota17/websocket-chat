@@ -18,3 +18,7 @@ export const mutations = {
     state.users = users;
   },
 };
+
+export const getters = {
+  userExist: (state) => Boolean(state.user),
+};
