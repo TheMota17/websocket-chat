@@ -1,6 +1,6 @@
 <template>
-  <div class="messages__text-message">
-    <h3 class="messages__name">{{ userName }}</h3>
+  <div class="text-message">
+    <h3 class="text-message__name">{{ userName }}</h3>
     <span>{{ text }}</span>
   </div>
 </template>
@@ -15,10 +15,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.messages__text-message {
-  width: 90%;
+.text-message {
+  width: 50%;
 
   margin-top: 1em;
+  margin-left: 1em;
   padding: 0.6em;
 
   font-size: 15px;
@@ -27,10 +28,20 @@ export default {
 
   background-color: $color2;
 
+  align-self: flex-start;
+
+  &__name {
+    color: $color5;
+  }
+
   span {
     display: inline-block;
 
     margin-top: 0.5em;
   }
+}
+
+.messages__text-message_you {
+  align-self: flex-start;
 }
 </style>

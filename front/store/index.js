@@ -21,7 +21,7 @@ export const state = () => ({
     {
       id: 3,
       userName: "Mota",
-      text: "Hello guys! how are you ?",
+      userJoin: true,
       date: Date.now(),
     },
     {

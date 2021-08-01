@@ -1,12 +1,10 @@
 <template>
   <div class="messages__list">
-    <component
+    <ChatMessage
       v-for="message of messages"
       :key="message.id"
-      :userName="message.userName"
-      :text="message.text"
-      :is="message.userLeft ? 'LeftMessage' : 'TextMessage'"
-    ></component>
+      :message="message"
+    />
   </div>
 </template>
 

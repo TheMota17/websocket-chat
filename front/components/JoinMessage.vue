@@ -1,7 +1,7 @@
 <template>
-  <div class="left-message">
-    <span class="left-message__name">{{ userName }}</span>
-    <span>came out of the chat</span>
+  <div class="join-message">
+    <span class="join-message__name">{{ userName }}</span>
+    <span>joined the chat</span>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.left-message {
+.join-message {
   width: 90%;
 
   margin-top: 1em;
