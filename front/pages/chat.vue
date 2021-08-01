@@ -54,6 +54,16 @@ main {
   display: flex;
 }
 
+.messages {
+  width: 70%;
+
+  background-color: $color2;
+
+  padding: 1em;
+
+  border-radius: 4px;
+}
+
 .users {
   width: 30%;
   height: 100%;
