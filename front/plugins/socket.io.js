@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueSocketIO from "vue-3-socket.io";
-import SocketIO from "socket.io-client/dist/socket.io";
+import SocketIO from "socket.io-client";
 
 export default function({ store }) {
   Vue.use(
