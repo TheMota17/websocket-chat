@@ -1,8 +1,5 @@
 export const state = () => ({
-  user: {
-    name: "name",
-    room: "Room1",
-  },
+  user: null,
   users: ["JackS", "TheMota", "lalal", "Lol"],
   messages: [
     {
@@ -80,6 +77,7 @@ export const mutations = {
 
 export const getters = {
   userExist: (state) => Boolean(state.user),
+  user: (state) => state.user,
   messages: (state) => state.messages,
   users: (state) => state.users,
 };

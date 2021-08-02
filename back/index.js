@@ -1,5 +1,4 @@
-const io = require("./app.js");
-const server = require("./server.js");
+const io = require("./socket.io.js");
 
 const PORT = 443;
 

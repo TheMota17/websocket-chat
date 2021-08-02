@@ -10,7 +10,7 @@
           <TheMessageForm @send-message="sendMessage" />
         </section>
         <aside class="users">
-          <h1 class="users__title">Room: Hello World!</h1>
+          <h1 class="users__title">Room: {{ user.roomName }}</h1>
           <ul class="users__list">
             <li v-for="user of usersNum" :key="user.num" class="users__item">
               {{ user.num }}. {{ user.name }}
@@ -29,6 +29,9 @@ export default {
     sendMessage(message) {},
   },
   computed: {
+    user() {
+      return this.$store.getters.user;
+    },
     messages() {
       return this.$store.getters.messages;
     },
@@ -39,7 +42,11 @@ export default {
       const users = this.users;
 
       return users.map((user) => {
-        return { name: user, num: users.indexOf(user) + 1 };
+        return {
+          name: user.name,
+          roomName: user.roomName,
+          num: users.indexOf(user) + 1,
+        };
       });
     },
   },

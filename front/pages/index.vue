@@ -12,8 +12,14 @@ export default {
   layout: "login",
   methods: {
     login(form) {
-      this.$socket.emit("userJoin", form, (data) => {
-        console.log(data);
+      this.$socket.emit("joinToRoom", form, (data) => {
+        if (typeof data === "string") {
+          console.log(data);
+        } else {
+          this.$store.commit("setUser", data);
+
+          this.$router.push("/chat");
+        }
       });
     },
   },
