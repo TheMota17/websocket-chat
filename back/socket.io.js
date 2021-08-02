@@ -5,7 +5,7 @@ const server = new Server();
 
 io.on("connection", (socket) => {
   socket.on("joinToRoom", (data, cb) => {
-    if (!data.login || !data.roomName) {
+    if (!data.name || !data.roomName) {
       return cb("Not all data filling");
     }
 
@@ -13,7 +13,7 @@ io.on("connection", (socket) => {
 
     server.addUser({
       id: socket.id,
-      name: data.login,
+      name: data.name,
       roomName: data.roomName,
     });
 
@@ -21,6 +21,13 @@ io.on("connection", (socket) => {
       "updateUsers",
       server.getUsersByRoom(data.roomName)
     );
+
+    io.to(data.roomName).emit("newMessage", {
+      userId: socket.id,
+      userName: data.name,
+      userJoin: true,
+      date: Date.now(),
+    });
 
     cb({
       id: socket.id,
@@ -49,7 +56,22 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", (reason) => {
-    console.log("Disconnect");
+    const user = server.removeUser(socket.id);
+
+    if (!user) {
+      return;
+    }
+
+    io.to(user.roomName).emit(
+      "updateUsers",
+      server.getUsersByRoom(user.roomName)
+    );
+    io.to(user.roomName).emit("newMessage", {
+      userId: user.id,
+      userName: user.name,
+      userLeft: true,
+      date: Date.now(),
+    });
   });
 });
 

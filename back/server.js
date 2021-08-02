@@ -18,6 +18,16 @@ class Server {
   getUsersByRoom(room) {
     return this.users.filter((user) => user.roomName === room);
   }
+
+  removeUser(socketId) {
+    const user = this.getUserById(socketId);
+
+    if (user) {
+      this.users = this.users.filter((user) => user.id !== socketId);
+    }
+
+    return user || false;
+  }
 }
 
 module.exports = Server;
