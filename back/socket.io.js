@@ -12,6 +12,7 @@ io.on("connection", (socket) => {
     socket.join(data.roomName);
 
     server.addUser({
+      id: socket.id,
       name: data.login,
       roomName: data.roomName,
     });
@@ -22,9 +23,33 @@ io.on("connection", (socket) => {
     );
 
     cb({
+      id: socket.id,
       name: data.login,
       roomName: data.roomName,
     });
+  });
+
+  socket.on("newMessage", (data, cb) => {
+    const message = data.trim();
+
+    if (message.length <= 0) {
+      return cb("Not correct message");
+    }
+
+    const user = server.getUserById(socket.id);
+
+    io.to(user.roomName).emit("newMessage", {
+      userId: user.id,
+      userName: user.name,
+      text: message,
+      date: Date.now(),
+    });
+
+    cb();
+  });
+
+  socket.on("disconnect", (reason) => {
+    console.log("Disconnect");
   });
 });
 

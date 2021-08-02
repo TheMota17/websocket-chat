@@ -19,7 +19,7 @@ export default {
   }),
   methods: {
     submit() {
-      this.$emit("send-message", { ...this.form.message });
+      this.$emit("send-message", this.form.message);
 
       this.form.message = "";
     },

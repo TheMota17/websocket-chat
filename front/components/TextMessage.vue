@@ -1,5 +1,5 @@
 <template>
-  <div class="text-message">
+  <div class="text-message" :class="{ 'text-message_you': user.id === userId }">
     <h3 class="text-message__name">{{ userName }}</h3>
     <span>{{ text }}</span>
   </div>
@@ -8,8 +8,14 @@
 <script>
 export default {
   props: {
+    userId: String,
     userName: String,
     text: String,
+  },
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    },
   },
 };
 </script>
@@ -48,7 +54,7 @@ export default {
   }
 }
 
-.messages__text-message_you {
-  align-self: flex-start;
+.text-message_you {
+  align-self: flex-end;
 }
 </style>

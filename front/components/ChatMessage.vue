@@ -1,5 +1,6 @@
 <template>
   <component
+    :userId="message.userId"
     :userName="message.userName"
     :text="message.text"
     :is="componentName"

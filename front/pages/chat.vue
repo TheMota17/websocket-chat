@@ -26,7 +26,13 @@
 export default {
   middleware: ["auth"],
   methods: {
-    sendMessage(message) {},
+    sendMessage(message) {
+      this.$socket.emit("newMessage", message, (data) => {
+        if (typeof data === "string") {
+          console.log(data);
+        }
+      });
+    },
   },
   computed: {
     user() {

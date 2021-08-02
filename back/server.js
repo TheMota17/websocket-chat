@@ -3,6 +3,10 @@ class Server {
     this.users = [];
   }
 
+  getUserById(socketId) {
+    return this.users.find((user) => user.id === socketId);
+  }
+
   addUser(user) {
     this.users.push(user);
   }
