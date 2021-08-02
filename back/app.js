@@ -1,7 +1,9 @@
 const io = require("socket.io")();
 
 io.on("connection", (socket) => {
-  console.log("Conn!");
+  socket.on("userJoin", (data, cb) => {
+    cb("Hellow");
+  });
 });
 
 module.exports = io;

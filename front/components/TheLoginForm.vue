@@ -1,8 +1,13 @@
 <template>
   <form @submit.prevent="submit">
-    <input v-model="form.login" class="input" type="text" placeholder="Login" />
     <input
-      v-model="form.roomName"
+      v-model.trim="form.login"
+      class="input"
+      type="text"
+      placeholder="Login"
+    />
+    <input
+      v-model.trim="form.roomName"
       class="input"
       type="text"
       placeholder="Room name"
@@ -20,7 +25,12 @@ export default {
     },
   }),
   methods: {
-    submit() {},
+    submit() {
+      this.$emit("login", { ...this.form });
+
+      this.form.login = "";
+      this.form.roomName = "";
+    },
   },
 };
 </script>

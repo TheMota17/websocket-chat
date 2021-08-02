@@ -7,7 +7,7 @@
             Messages
           </h1>
           <TheMessagesList :messages="messages" />
-          <TheMessageForm />
+          <TheMessageForm @send-message="sendMessage" />
         </section>
         <aside class="users">
           <h1 class="users__title">Room: Hello World!</h1>
@@ -25,6 +25,9 @@
 <script>
 export default {
   middleware: ["auth"],
+  methods: {
+    sendMessage(message) {},
+  },
   computed: {
     messages() {
       return this.$store.getters.messages;

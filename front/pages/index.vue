@@ -2,7 +2,7 @@
   <main class="index">
     <section class="login">
       <h1>Login</h1>
-      <TheLoginForm />
+      <TheLoginForm @login="login" />
     </section>
   </main>
 </template>
@@ -10,6 +10,13 @@
 <script>
 export default {
   layout: "login",
+  methods: {
+    login(form) {
+      this.$socket.emit("userJoin", form, (data) => {
+        console.log(data);
+      });
+    },
+  },
 };
 </script>
 
